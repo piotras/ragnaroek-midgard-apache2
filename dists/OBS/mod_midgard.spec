@@ -13,6 +13,10 @@
 %define rpm_name mod_midgard
 %endif
 
+%if 0%{?centos_version} == 700
+%define _sbindir /usr/bin
+%endif
+
 Name:           %{rpm_name}
 Version:        %{major_version}
 Release:        OBS
