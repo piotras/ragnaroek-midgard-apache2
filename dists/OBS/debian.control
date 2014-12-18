@@ -1,0 +1,26 @@
+Source: midgard-apache2
+Section: web
+Priority: optional
+Maintainer: Piotr Pokora <piotrek.pokora@gmail.com>
+Standards-Version: 3.5.2
+Build-Depends: debhelper (>=3), apache2-prefork-dev(>=2.2.3-3.1) | apache2-dev, libmidgard8.9-dev (>=8.10.0), midgard-common (>=8.10.0), libxml2 (>=2.6.11), libpam0g
+
+Package: libapache2-mod-midgard
+Section: web
+Architecture: NOTSET
+Depends: apache2-mpm-prefork (>=2.2.3-3.1), midgard-common, ${shlibs:Depends}
+Conflicts: libapache-mod-midgard-preparse
+Replaces: libapache-mod-midgard-preparse
+Description: Midgard Content Management System - Apache Module
+ .
+ This package provides Midgard's Apache2 Module. If you intend to use the
+ Midgard Content Management System, you require this package as it provides
+ the glue between Apache and the Midgard system. This version makes use of 
+ preparsed files in order to reduce  the time required to respond to requests. 
+ .
+ Midgard is a capable open source content management system for running
+ mid-to-high-end websites. In addition to the built-in content management
+ features, Midgard also provides a highly object-oriented component
+ architecture for building interactive web applications that integrate
+ seamlessly with the website.
+

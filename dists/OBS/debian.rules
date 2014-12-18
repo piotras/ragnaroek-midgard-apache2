@@ -1,0 +1,70 @@
+#! /usr/bin/make -f
+
+#export DH_VERBOSE=1
+export DH_COMPAT=4
+export DH_OPTIONS
+
+MODULE_DIR=`apxs2 -q LIBEXECDIR`
+APXS=/usr/bin/apxs2
+
+DEB_BUILD_ARCH   ?= $(shell dpkg-architecture -qDEB_BUILD_ARCH)
+
+switch-arch:
+	sed -e 's/Architecture: NOTSET/Architecture: ${DEB_BUILD_ARCH}/g' debian/control > control.dummy
+	mv control.dummy debian/control
+
+build: build-stamp
+build-stamp: configure-stamp
+	dh_testdir
+	#$(APXS) -c midgard-apache2.c
+	$(MAKE) LDFLAGS=$(LDFLAGS)
+	touch $@
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	cp /usr/share/misc/config.sub .
+	cp /usr/share/misc/config.guess .
+	./configure --with-apxs=/usr/bin/apxs2
+	touch $@
+
+clean:
+	dh_testdir
+	-$(MAKE) distclean
+	rm -f build-stamp configure-stamp
+	dh_clean
+
+install: DH_OPTIONS=
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean
+	dh_installdirs
+	$(MAKE) install \
+		INSTALL='/usr/bin/install -c -o root -g root' \
+		DESTDIR=`pwd`/debian/tmp
+	dh_movefiles
+	
+# nothing to do
+binary-indep: DH_OPTIONS=-i
+binary-indep:
+
+binary-indep: DH_OPTIONS=-a
+binary-arch: build 
+	dh_testdir
+	dh_testroot
+	dh_install
+	dh_installdocs	
+	dh_installchangelogs
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_makeshlibs
+	dh_shlibdeps -L libmidgard9
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary:	switch-arch binary-indep binary-arch
+.PHONY: switch-arch binary binary-arch binary-indep clean configure build

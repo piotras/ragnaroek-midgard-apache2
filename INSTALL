@@ -1,0 +1,48 @@
+Copyright (C) 1999 Jukka Zitting <jukka.zitting@iki.fi>
+Copyright (C) 2000 The Midgard Project ry
+Copyright (C) 2007 Piotr Pokora <piotrek.pokora@gmail.com>
+See the end for copying conditions.
+
+These are the installation instructions of the Midgard address
+translation and user authentication module. The module is used by
+Apache to map URLs to Midgard database records.
+
+This module uses the GNU configure system for configuration and
+installation. The configure script locates the Apache apxs tool and
+uses it to compile and install the module. You can configure, build,
+install and setup mod_midgard by running:
+
+ $ ./configure
+ $ make
+ # make install
+
+The module needs midgard-core installed. If you build binaries for 
+Linux distribution you should also install midgard-core development
+package, which provides pc file used by pkg-config tool.
+
+DEBIAN NOTE: 
+This package should be configured with propper apxs binary 
+( apxs2 in debian ).
+
+ $ ./configure --wtih-apxs=/usr/bin/apxs2
+
+Copyright information:
+
+Copyright (C) 1999 Jukka Zitting <jukka.zitting@iki.fi>
+Copyright (C) 2000 The Midgard Project ry
+Copyright (C) 2007 Piotr Pokora <piotrek.pokora@gmail.com>
+
+   Permission is granted to anyone to make or distribute verbatim copies
+   of this document as received, in any medium, provided that the
+   copyright notice and this permission notice are preserved,
+   thus giving the recipient permission to redistribute in turn.
+
+   Permission is granted to distribute modified versions
+   of this document, or of portions of it,
+   under the above conditions, provided also that they
+   carry prominent notices stating who last changed them.
+^L
+Local variables:
+version-control: never
+mode: indented-text
+end:

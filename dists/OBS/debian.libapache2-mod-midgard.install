@@ -1,0 +1,5 @@
+.libs/midgard-apache2.so usr/lib/apache2/modules
+.libs/midgard-apache2.so.0 usr/lib/apache2/modules
+.libs/midgard-apache2.so.0.0.0 usr/lib/apache2/modules
+midgard-root.php  usr/lib/apache2/modules
+midgard-root-nommp.php usr/lib/apache2/modules

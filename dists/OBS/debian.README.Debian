@@ -1,0 +1,5 @@
+This package is replacement for old libapache-mod-midgard.
+It supports caching  abilities for midgard sites, and better 
+error handling facilities.
+Provides midgard-apache2 from midgard sources.
+
