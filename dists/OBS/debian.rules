@@ -23,8 +23,6 @@ build-stamp: configure-stamp
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	cp /usr/share/misc/config.sub .
-	cp /usr/share/misc/config.guess .
 	./configure --with-apxs=/usr/bin/apxs2
 	touch $@
 
